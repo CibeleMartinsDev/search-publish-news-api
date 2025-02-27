@@ -43,9 +43,4 @@ nb-configuration.xml
 /.quarkus/cli/plugins/
 # TLS Certificates
 .certs/
-application.properties
-
-./application.properties
-.application.properties
-./src/main/resources/application.properties
-
+.env
