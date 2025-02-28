@@ -6,7 +6,7 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 
 @Path("/wp-json/jwt-auth/v1/token")
-@RegisterRestClient(baseUri = "${WORDPRESS_SITE_URL}")
+@RegisterRestClient(baseUri = "https://www.diariocerto.com.br")
 public interface WordpressAuthClient {
 
     @POST

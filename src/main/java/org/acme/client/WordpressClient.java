@@ -2,11 +2,12 @@ package org.acme.client;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 
 @Path("/wp-json/wp/v2/posts")
-@RegisterRestClient(baseUri = "${WORDPRESS_SITE_URL}")
+@RegisterRestClient(baseUri = "https://www.diariocerto.com.br")
 public interface WordpressClient {
 
     @POST

@@ -27,7 +27,7 @@ public class NewsService {
         return newsApiClient.getNews(apiToken,  search,"pt","br", limit);
     }
 
-    public void publishNews() {
+    public void publishNews(String search) {
         //receber o 6 tipos de busca
 
         //buscar 6 noticias
