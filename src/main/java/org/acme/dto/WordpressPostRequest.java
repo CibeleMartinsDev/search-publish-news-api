@@ -1,45 +1,92 @@
 package org.acme.dto;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class WordpressPostDTO {
+public class WordpressPostRequest {
 
-    private LocalDateTime date;  // Data de publicação no fuso horário do site
-    private LocalDateTime dateGmt;  // Data de publicação em GMT
-    private String slug;  // Identificador alfanumérico único do post
-    private String status;  // Status do post: publish, future, draft, pending, private
-    private String password;  // Senha para proteger o acesso ao conteúdo e resumo
-    private String title;  // Título do post
-    private String content;  // Conteúdo do post
-    private int author;  // ID do autor do post
-    private String excerpt;  // Resumo do post
-    private int featuredMedia;  // ID da mídia em destaque
-    private String commentStatus;  // Status de comentários: open ou closed
-    private String pingStatus;  // Status de ping: open ou closed
-    private String format;  // Formato do post: standard, aside, chat, gallery, link, image, quote, status, video, audio
-    private List<String> meta;  // Campos meta adicionais
-    private boolean sticky;  // Se o post deve ser tratado como "sticky"
-    private String template;  // Arquivo de tema a ser usado para exibir o post
-    private List<String> categories;  // Categorias atribuídas ao post
-    private List<String> tags;  // Tags atribuídas ao post
+    private String date;
+    private String dateGmt;
+    private String guid;
+    private int id;
+    private String link;
+    private String modified;
+    private String modifiedGmt;
+    private String slug;
+    private String status;
+    private String type;
+    private String password;
+    private String permalinkTemplate;
+    private String generatedSlug;
+    private String title;
+    private String content;
+    private int author;
+    private String excerpt;
+    private int featuredMedia;
+    private String commentStatus;
+    private String pingStatus;
+    private String format;
+    private Object meta;  // Assuming meta is a generic object (it can be more specific depending on the use case)
+    private boolean sticky;
+    private String template;
+    private List<String> categories;
+    private List<String> tags;
 
-    // Getters e Setters
+    // Getters and Setters for all properties
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalDateTime getDateGmt() {
+    public String getDateGmt() {
         return dateGmt;
     }
 
-    public void setDateGmt(LocalDateTime dateGmt) {
+    public void setDateGmt(String dateGmt) {
         this.dateGmt = dateGmt;
+    }
+
+    public String getGuid() {
+        return guid;
+    }
+
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getModified() {
+        return modified;
+    }
+
+    public void setModified(String modified) {
+        this.modified = modified;
+    }
+
+    public String getModifiedGmt() {
+        return modifiedGmt;
+    }
+
+    public void setModifiedGmt(String modifiedGmt) {
+        this.modifiedGmt = modifiedGmt;
     }
 
     public String getSlug() {
@@ -58,12 +105,36 @@ public class WordpressPostDTO {
         this.status = status;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPermalinkTemplate() {
+        return permalinkTemplate;
+    }
+
+    public void setPermalinkTemplate(String permalinkTemplate) {
+        this.permalinkTemplate = permalinkTemplate;
+    }
+
+    public String getGeneratedSlug() {
+        return generatedSlug;
+    }
+
+    public void setGeneratedSlug(String generatedSlug) {
+        this.generatedSlug = generatedSlug;
     }
 
     public String getTitle() {
@@ -130,11 +201,11 @@ public class WordpressPostDTO {
         this.format = format;
     }
 
-    public List<String> getMeta() {
+    public Object getMeta() {
         return meta;
     }
 
-    public void setMeta(List<String> meta) {
+    public void setMeta(Object meta) {
         this.meta = meta;
     }
 
@@ -170,3 +241,4 @@ public class WordpressPostDTO {
         this.tags = tags;
     }
 }
+
