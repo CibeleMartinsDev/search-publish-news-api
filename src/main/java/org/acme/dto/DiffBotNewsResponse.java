@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DiffBotNewsDTO {
+public class DiffBotNewsResponse {
 
     @JsonProperty("request")
     public Request request;
@@ -18,6 +18,16 @@ public class DiffBotNewsDTO {
     @JsonProperty("objects")
     public List<Object> objects;
 
+    // Construtor com JsonCreator
+    @JsonCreator
+    public DiffBotNewsResponse(@JsonProperty("request") Request request,
+                               @JsonProperty("humanLanguage") String humanLanguage,
+                               @JsonProperty("objects") List<Object> objects) {
+        this.request = request;
+        this.humanLanguage = humanLanguage;
+        this.objects = objects;
+    }
+
     @Override
     public String toString() {
         return "DiffBotNewsDTO{" +
@@ -25,16 +35,6 @@ public class DiffBotNewsDTO {
                 ", humanLanguage='" + humanLanguage + '\'' +
                 ", objects=" + objects +
                 '}';
-    }
-
-    // Construtor com JsonCreator
-    @JsonCreator
-    public DiffBotNewsDTO(@JsonProperty("request") Request request,
-                          @JsonProperty("humanLanguage") String humanLanguage,
-                          @JsonProperty("objects") List<Object> objects) {
-        this.request = request;
-        this.humanLanguage = humanLanguage;
-        this.objects = objects;
     }
 
     // Getters e Setters
@@ -77,16 +77,6 @@ public class DiffBotNewsDTO {
         @JsonProperty("version")
         public int version;
 
-        @Override
-        public String toString() {
-            return "Request{" +
-                    "options=" + options +
-                    ", pageUrl='" + pageUrl + '\'' +
-                    ", api='" + api + '\'' +
-                    ", version=" + version +
-                    '}';
-        }
-
         // Construtor com JsonCreator
         @JsonCreator
         public Request(@JsonProperty("options") List<String> options,
@@ -97,6 +87,16 @@ public class DiffBotNewsDTO {
             this.pageUrl = pageUrl;
             this.api = api;
             this.version = version;
+        }
+
+        @Override
+        public String toString() {
+            return "Request{" +
+                    "options=" + options +
+                    ", pageUrl='" + pageUrl + '\'' +
+                    ", api='" + api + '\'' +
+                    ", version=" + version +
+                    '}';
         }
 
         // Getters e Setters
@@ -178,26 +178,6 @@ public class DiffBotNewsDTO {
         @JsonProperty("text")
         public String text;
 
-        @Override
-        public String toString() {
-            return "Object{" +
-                    "date='" + date + '\'' +
-                    ", images=" + images +
-                    ", author='" + author + '\'' +
-                    ", estimatedDate='" + estimatedDate + '\'' +
-                    ", icon='" + icon + '\'' +
-                    ", diffbotUri='" + diffbotUri + '\'' +
-                    ", siteName='" + siteName + '\'' +
-                    ", type='" + type + '\'' +
-                    ", title='" + title + '\'' +
-                    ", humanLanguage='" + humanLanguage + '\'' +
-                    ", pageUrl='" + pageUrl + '\'' +
-                    ", html='" + html + '\'' +
-                    ", categories=" + categories +
-                    ", text='" + text + '\'' +
-                    '}';
-        }
-
         // Construtor com JsonCreator
         @JsonCreator
         public Object(@JsonProperty("date") String date,
@@ -228,6 +208,26 @@ public class DiffBotNewsDTO {
             this.html = html;
             this.categories = categories;
             this.text = text;
+        }
+
+        @Override
+        public String toString() {
+            return "Object{" +
+                    "date='" + date + '\'' +
+                    ", images=" + images +
+                    ", author='" + author + '\'' +
+                    ", estimatedDate='" + estimatedDate + '\'' +
+                    ", icon='" + icon + '\'' +
+                    ", diffbotUri='" + diffbotUri + '\'' +
+                    ", siteName='" + siteName + '\'' +
+                    ", type='" + type + '\'' +
+                    ", title='" + title + '\'' +
+                    ", humanLanguage='" + humanLanguage + '\'' +
+                    ", pageUrl='" + pageUrl + '\'' +
+                    ", html='" + html + '\'' +
+                    ", categories=" + categories +
+                    ", text='" + text + '\'' +
+                    '}';
         }
 
         // Getters e Setters
@@ -371,20 +371,6 @@ public class DiffBotNewsDTO {
         @JsonProperty("height")
         public int height;
 
-        @Override
-        public String toString() {
-            return "Image{" +
-                    "naturalHeight=" + naturalHeight +
-                    ", width=" + width +
-                    ", diffbotUri='" + diffbotUri + '\'' +
-                    ", title='" + title + '\'' +
-                    ", url='" + url + '\'' +
-                    ", naturalWidth=" + naturalWidth +
-                    ", primary=" + primary +
-                    ", height=" + height +
-                    '}';
-        }
-
         // Construtor com JsonCreator
         @JsonCreator
         public Image(@JsonProperty("naturalHeight") int naturalHeight,
@@ -403,6 +389,20 @@ public class DiffBotNewsDTO {
             this.naturalWidth = naturalWidth;
             this.primary = primary;
             this.height = height;
+        }
+
+        @Override
+        public String toString() {
+            return "Image{" +
+                    "naturalHeight=" + naturalHeight +
+                    ", width=" + width +
+                    ", diffbotUri='" + diffbotUri + '\'' +
+                    ", title='" + title + '\'' +
+                    ", url='" + url + '\'' +
+                    ", naturalWidth=" + naturalWidth +
+                    ", primary=" + primary +
+                    ", height=" + height +
+                    '}';
         }
 
         // Getters e Setters
@@ -483,15 +483,6 @@ public class DiffBotNewsDTO {
         @JsonProperty("id")
         public String id;
 
-        @Override
-        public String toString() {
-            return "Category{" +
-                    "score=" + score +
-                    ", name='" + name + '\'' +
-                    ", id='" + id + '\'' +
-                    '}';
-        }
-
         // Construtor com JsonCreator
         @JsonCreator
         public Category(@JsonProperty("score") double score,
@@ -500,6 +491,15 @@ public class DiffBotNewsDTO {
             this.score = score;
             this.name = name;
             this.id = id;
+        }
+
+        @Override
+        public String toString() {
+            return "Category{" +
+                    "score=" + score +
+                    ", name='" + name + '\'' +
+                    ", id='" + id + '\'' +
+                    '}';
         }
 
         // Getters e Setters
