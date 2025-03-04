@@ -50,9 +50,11 @@ public class NewsResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response extractContentNews(DiffBotNewsRequest diffBotNewsRequest) throws Exception {
+    public Response extractContentNews(@QueryParam("urls") String urls) throws Exception {
+        DiffBotNewsRequest request = new DiffBotNewsRequest();
+//        request.getUrls().addAll(urls);
         //chama o servico que extrai o conteúdo das noticias
-        ArrayList<DiffBotNewsResponse.Object> extractContentNews = newsService.getContentNews(diffBotNewsRequest);
+        ArrayList<DiffBotNewsResponse.Object> extractContentNews = newsService.getContentNews(urls);
         return Response.ok(extractContentNews).build();
     }
 }

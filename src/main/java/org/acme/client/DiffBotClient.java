@@ -7,7 +7,7 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-@RegisterRestClient(baseUri = "https://api.diffbot.com/v3/article")
+@RegisterRestClient(baseUri = "https://api.diffbot.com/v3/analyze")
 @ApplicationScoped
 public interface DiffBotClient {
 
