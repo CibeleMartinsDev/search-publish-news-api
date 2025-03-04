@@ -60,23 +60,21 @@ public class NewsService {
     }
 
     public ArrayList<DiffBotNewsResponse.Object> getContentNews(String urls) throws Exception {
-//        try {
+        try {
             ArrayList<DiffBotNewsResponse.Object> result = new ArrayList<>();
             for (String url : urls.split(",")) {
-                System.out.println(url);
                 url.replace("/", "\\/");
-                String response = diffBotClient.getContentNews(apiDiffbotToken, "https://g1.globo.com/pr/parana/especial-publicitario/sancor-seguros/sancor-seguros/noticia/2024/09/05/impacta-maringa-projeto-ensi-mar-recebe-incentivo-de-r-5-mil-da-sancor-seguros.ghtml", "5000");
+                String response = diffBotClient.getContentNews(apiDiffbotToken, url, "5000");
                 ObjectMapper objectMapper = new ObjectMapper();
                 DiffBotNewsResponse diffBotNewsResponse = objectMapper.readValue(response, DiffBotNewsResponse.class);
                 if(diffBotNewsResponse.getObjects() != null){
                     result.addAll(diffBotNewsResponse.getObjects());
                 }
-
             }
             return result;
-//        } catch (Exception e) {
-//            throw new Exception("Erro ao extrair o conteúdo das notícias. Tente novamente em instantes.");
-//        }
+        } catch (Exception e) {
+            throw new Exception("Erro ao extrair o conteúdo das notícias. Tente novamente em instantes.");
+        }
     }
 
 }

@@ -6,7 +6,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.acme.dto.PostNewsRequest;
-import org.acme.dto.WordpressAuthRequest;
 import org.acme.service.WordpressService;
 
 @Path("/api/v1/wp")
@@ -27,9 +26,11 @@ public class WordpressResource {
     ;
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response postNews(PostNewsRequest postNewsRequest) {
-
-        return Response.ok().build();
+        String response = wordpressService.postNews(postNewsRequest.getDiffBotNewsResponses());
+        return Response.ok(response).build();
     }
 
     ;

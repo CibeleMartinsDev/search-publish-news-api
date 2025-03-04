@@ -2,7 +2,7 @@ package org.acme.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import org.acme.NewsMapper;
+import org.acme.mapper.NewsMapper;
 import org.acme.client.WordpressClient;
 import org.acme.dto.DiffBotNewsResponse;
 import org.acme.dto.WordpressPostRequest;
@@ -25,16 +25,16 @@ public class WordpressService {
     private String urlSite;
 
     public String postNews(ArrayList<DiffBotNewsResponse.Object> diffBotNews){
-
         try {
             ArrayList<WordpressPostRequest> wordpressPostRequests = NewsMapper.from(diffBotNews);
-//            String response = wordpressClient.createPost(auth,  );
+            for(WordpressPostRequest wpPost : wordpressPostRequests){
+                String response = wordpressClient.createPost(auth, wpPost.toString());
+                System.out.println("Response WP: "+ response);
+            }
             return "Publicação realizada com sucesso! Acesse o seu site agora para vê-las! " + urlSite;
         } catch (Exception e) {
-            throw new RuntimeException("Ocorreu um erro ao realizar a publicação. Tente novamente em instantes.");
+            throw new RuntimeException("Ocorreu um erro ao realizar a publicação. Tente novamente em instantes." + e.getCause() + e.getMessage());
         }
-
-
 
     }
 
