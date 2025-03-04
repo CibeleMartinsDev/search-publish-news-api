@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.mapper;
 
 import org.acme.dto.DiffBotNewsResponse;
 import org.acme.dto.WordpressPostRequest;
@@ -20,9 +20,9 @@ public class NewsMapper {
             //slug
 
             //link p/ noticia
-
-            // autor da noticia
-
+//            wpPost.setLink();
+            // autor da noticia (no wp e o id do author, vamos ter que chumbar em Enum/0
+//            wpPost.setAuthor(diffBotNews.getAuthor());
             // fonte da noticia
 
             //categoria (destaque p/ exemplo)
@@ -34,6 +34,12 @@ public class NewsMapper {
             // data de publicacao da noticia referente a fonte dela, de onde foi publicada
 
             //status = publish (para publicar o post no wp)
+            wpPost.setStatus("publish");
+
+            //se esta aberta a comentarios
+            wpPost.setCommentStatus("closed");
+
+            wordpressPosts.add(wpPost);
         }
 
         return wordpressPosts;
